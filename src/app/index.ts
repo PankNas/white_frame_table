@@ -1,0 +1,1 @@
+export {$table, fetchTableDataFx} from './store';

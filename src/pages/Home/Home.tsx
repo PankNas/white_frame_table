@@ -1,10 +1,11 @@
 import {Select, Table} from 'antd';
 import styles from './styles.module.css';
 import {useEffect, useState} from "react";
-import {getTableData} from "./utils.ts";
-import {$table, fetchTableDataFx} from "./app/store";
+import {getTableData} from "../../utils.ts";
+import {$table, fetchTableDataFx} from "../../app";
 import {useUnit} from "effector-react";
-import './reset.css';
+import {useFetch} from './hook.ts';
+import {TableDataType} from "../../types.ts";
 
 const columns = [
   {
@@ -24,22 +25,17 @@ const columns = [
   },
 ];
 
-function App() {
-  const [tableData, setTableData] = useState<any>(null);
-  const storeTable = useUnit($table)
-
-  useEffect(() => {
-    const load = async () => {
-      const data = await getTableData();
-      setTableData(data)
-    }
-
-    load();
-  }, []);
+export function Home() {
+  const storeTable = useUnit($table) // хранилище
+  const table = useFetch<TableDataType>() // запрос на бэк
 
   useEffect(() => {
     fetchTableDataFx(undefined);
   }, []);
+
+  const handleChangeSelect = (value) => {
+
+  }
 
   return (
     <main className={styles.mainPage}>
@@ -49,12 +45,11 @@ function App() {
           {value: 'store', label: <span>Данные из хранилища</span>},
           {value: 'all', label: <span>Данные из бэка</span>}]
         }
+        onChange={handleChangeSelect}
         className={styles.mainPage__select}
       />
 
-      <Table dataSource={storeTable} columns={columns}/>
+      <Table dataSource={storeTable} columns={columns} pagination={false}/>
     </main>
   )
 }
-
-export default App
