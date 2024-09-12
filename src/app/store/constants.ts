@@ -1,10 +1,18 @@
 import {TableDataType} from "../../shared";
 
-export const STORE_TABLE_DATA: TableDataType[] = [...Array(8)].map((_, index) => {
-  return {
-    key: index,
-    name: `Store Alex ${index}`,
-    age: 32 + index,
-    address: `${index + 1} Downing Street`,
-  }
-});
+export const STORE_TABLE_DATA: TableDataType[] = [
+  {
+    key: 1,
+    name: 'Гарри Поттер',
+    age: 11,
+    movie: 'Гарри Поттер и философский камень',
+    source: 'Хранилище'
+  },
+  {
+    key: 2,
+    name: '',
+    age: 11,
+    movie: '',
+    source: 'Хранилище'
+  },
+];

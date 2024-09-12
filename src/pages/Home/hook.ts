@@ -6,8 +6,12 @@ export const useFetch = <T extends {}>() => {
 
   useEffect(() => {
     const load = async () => {
-      const data = await getTableData();
-      setData(data)
+      try {
+        const data = await getTableData();
+        setData(data)
+      } catch {
+        setData([]);
+      }
     }
 
     load();

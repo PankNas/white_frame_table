@@ -5,48 +5,34 @@ import {$table} from "../../app";
 import {useUnit} from "effector-react";
 import {useFetch} from './hook.ts';
 import {TableDataType} from "../../shared";
-
-const columns = [
-  {
-    title: 'Name',
-    dataIndex: 'name',
-    key: 'name',
-  },
-  {
-    title: 'Age',
-    dataIndex: 'age',
-    key: 'age',
-  },
-  {
-    title: 'Address',
-    dataIndex: 'address',
-    key: 'address',
-  },
-];
+import {COLUMNS_TABLE_NAME, SELECT_OPTIONS} from "./constants.tsx";
 
 export function Home() {
-  const [selectItem, setSelectItem] = useState('store');
   const storeTable = useUnit($table); // хранилище
-  const table = useFetch<TableDataType[]>(); // запрос на бэк
+  const table = useFetch<TableDataType[]>(); // данные с бэка
+  const [selectedItem, setSelectedItem] = useState(SELECT_OPTIONS[0].value);
   const commonData = [...storeTable, ...table.data];
 
+  const visibleData = selectedItem === 'store' ? storeTable : commonData
+
   const handleChangeSelect = (value) => {
-    setSelectItem(value)
+    setSelectedItem(value)
   }
 
   return (
     <main className={styles.mainPage}>
       <Select
-        defaultValue="store"
-        options={[
-          {value: 'store', label: <span>Данные из хранилища</span>},
-          {value: 'all', label: <span>Всего данных (хранилище + бэк)</span>}]
-        }
+        defaultValue={selectedItem}
+        options={SELECT_OPTIONS}
         onChange={handleChangeSelect}
         className={styles.mainPage__select}
       />
 
-      <Table dataSource={selectItem === 'store' ? storeTable : commonData} columns={columns} pagination={false}/>
+      <Table
+        dataSource={visibleData}
+        columns={COLUMNS_TABLE_NAME}
+        pagination={false}
+      />
     </main>
   )
 }

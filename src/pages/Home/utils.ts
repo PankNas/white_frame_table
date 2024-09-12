@@ -2,16 +2,18 @@ import {TableDataType} from "../../shared";
 
 const dataSource: TableDataType[] = [
   {
-    key: 9,
-    name: 'Mike',
-    age: 32,
-    address: '10 Downing Street',
+    key: 3,
+    name: 'Гарри Поттер',
+    age: 11,
+    movie: 'Гарри Поттер и философский камень',
+    source: 'Сервер'
   },
   {
-    key: 10,
-    name: 'John',
-    age: 42,
-    address: '10 Downing Street',
+    key: 4,
+    name: '',
+    age: 11,
+    movie: '',
+    source: 'Сервер'
   },
 ];
 
