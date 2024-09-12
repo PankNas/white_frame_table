@@ -1,4 +1,4 @@
-import {TableDataType} from "@/shared";
+import {TableDataType} from '@/shared';
 
 const dataSource: TableDataType[] = [
   {

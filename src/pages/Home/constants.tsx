@@ -22,6 +22,6 @@ export const COLUMNS_TABLE_NAME = [
 ];
 
 export const SELECT_OPTIONS = [
-  {value: 'store', label: <span>Данные из хранилища </span>},
+  {value: 'store', label: <span>Данные из хранилища</span>},
   {value: 'common', label: <span>Всего данных(хранилище + бэк)</span>}
 ]

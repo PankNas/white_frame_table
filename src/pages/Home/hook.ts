@@ -1,6 +1,6 @@
-import {useEffect, useState} from "react";
-import {getTableData} from "./utils.ts";
-import {TableDataType} from "@/shared";
+import {useEffect, useState} from 'react';
+import {getTableData} from './utils.ts';
+import {TableDataType} from '@/shared';
 
 export const useFetch = () => {
   const [data, setData] = useState<TableDataType[]>([]);
