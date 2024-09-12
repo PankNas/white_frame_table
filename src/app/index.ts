@@ -1,1 +1,1 @@
-export {$table, fetchTableDataFx} from './store';
+export {$table} from './store';

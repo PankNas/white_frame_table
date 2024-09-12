@@ -1,11 +1,10 @@
 import {Select, Table} from 'antd';
 import styles from './styles.module.css';
-import {useEffect, useState} from "react";
-import {getTableData} from "../../utils.ts";
-import {$table, fetchTableDataFx} from "../../app";
+import {useState} from "react";
+import {$table} from "../../app";
 import {useUnit} from "effector-react";
 import {useFetch} from './hook.ts';
-import {TableDataType} from "../../types.ts";
+import {TableDataType} from "../../shared";
 
 const columns = [
   {
@@ -26,15 +25,13 @@ const columns = [
 ];
 
 export function Home() {
-  const storeTable = useUnit($table) // хранилище
-  const table = useFetch<TableDataType>() // запрос на бэк
-
-  useEffect(() => {
-    fetchTableDataFx(undefined);
-  }, []);
+  const [selectItem, setSelectItem] = useState('store');
+  const storeTable = useUnit($table); // хранилище
+  const table = useFetch<TableDataType[]>(); // запрос на бэк
+  const commonData = [...storeTable, ...table.data];
 
   const handleChangeSelect = (value) => {
-
+    setSelectItem(value)
   }
 
   return (
@@ -43,13 +40,13 @@ export function Home() {
         defaultValue="store"
         options={[
           {value: 'store', label: <span>Данные из хранилища</span>},
-          {value: 'all', label: <span>Данные из бэка</span>}]
+          {value: 'all', label: <span>Всего данных (хранилище + бэк)</span>}]
         }
         onChange={handleChangeSelect}
         className={styles.mainPage__select}
       />
 
-      <Table dataSource={storeTable} columns={columns} pagination={false}/>
+      <Table dataSource={selectItem === 'store' ? storeTable : commonData} columns={columns} pagination={false}/>
     </main>
   )
 }

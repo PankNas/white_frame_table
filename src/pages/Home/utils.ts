@@ -1,14 +1,14 @@
-import {TableDataType} from "./types.ts";
+import {TableDataType} from "../../shared";
 
 const dataSource: TableDataType[] = [
   {
-    key: '1',
+    key: 9,
     name: 'Mike',
     age: 32,
     address: '10 Downing Street',
   },
   {
-    key: '2',
+    key: 10,
     name: 'John',
     age: 42,
     address: '10 Downing Street',

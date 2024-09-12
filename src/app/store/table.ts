@@ -1,8 +1,5 @@
-import {createEffect, createStore} from "effector";
-import {TableDataType} from "../../types.ts";
-import {getTableData} from "../../utils.ts";
+import {createStore} from "effector";
+import {TableDataType} from "../../shared";
+import {STORE_TABLE_DATA} from "./constants.ts";
 
-export const fetchTableDataFx = createEffect(getTableData);
-
-export const $table = createStore([])
-  .on(fetchTableDataFx.doneData, (_, data) => data);
+export const $table = createStore<TableDataType[]>(STORE_TABLE_DATA)
