@@ -1,1 +1,1 @@
-export {TableDataType} from './types.ts';
+export type {TableDataType} from './types.ts';

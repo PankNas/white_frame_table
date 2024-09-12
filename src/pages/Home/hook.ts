@@ -1,8 +1,9 @@
 import {useEffect, useState} from "react";
 import {getTableData} from "./utils.ts";
+import {TableDataType} from "../../shared";
 
-export const useFetch = <T extends {}>() => {
-  const [data, setData] = useState<T>([]);
+export const useFetch = () => {
+  const [data, setData] = useState<TableDataType[]>([]);
 
   useEffect(() => {
     const load = async () => {

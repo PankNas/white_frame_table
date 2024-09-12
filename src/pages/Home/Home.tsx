@@ -4,18 +4,17 @@ import {useState} from "react";
 import {$table} from "../../app";
 import {useUnit} from "effector-react";
 import {useFetch} from './hook.ts';
-import {TableDataType} from "../../shared";
 import {COLUMNS_TABLE_NAME, SELECT_OPTIONS} from "./constants.tsx";
 
 export function Home() {
   const storeTable = useUnit($table); // хранилище
-  const backTable = useFetch<TableDataType[]>(); // данные с бэка
+  const backTable = useFetch(); // данные с бэка
   const [selectedItem, setSelectedItem] = useState(SELECT_OPTIONS[0].value);
   const commonData = [...storeTable, ...backTable.data];
 
   const visibleData = selectedItem === 'store' ? storeTable : commonData
 
-  const handleChangeSelect = (value) => {
+  const handleChangeSelect = (value: string) => {
     setSelectedItem(value)
   }
 
