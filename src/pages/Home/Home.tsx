@@ -1,7 +1,7 @@
 import {Select, Table} from 'antd';
 import styles from './styles.module.css';
 import {useState} from "react";
-import {$table} from "../../app";
+import {$table} from "@/app";
 import {useUnit} from "effector-react";
 import {useFetch} from './hook.ts';
 import {COLUMNS_TABLE_NAME, SELECT_OPTIONS} from "./constants.tsx";

@@ -1,4 +1,4 @@
-import {TableDataType} from "../../shared";
+import {TableDataType} from "@/shared";
 
 export const STORE_TABLE_DATA: TableDataType[] = [
   {
