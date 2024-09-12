@@ -9,9 +9,9 @@ import {COLUMNS_TABLE_NAME, SELECT_OPTIONS} from "./constants.tsx";
 
 export function Home() {
   const storeTable = useUnit($table); // хранилище
-  const table = useFetch<TableDataType[]>(); // данные с бэка
+  const backTable = useFetch<TableDataType[]>(); // данные с бэка
   const [selectedItem, setSelectedItem] = useState(SELECT_OPTIONS[0].value);
-  const commonData = [...storeTable, ...table.data];
+  const commonData = [...storeTable, ...backTable.data];
 
   const visibleData = selectedItem === 'store' ? storeTable : commonData
 
