@@ -1,20 +1,20 @@
-import {Select, Table} from 'antd';
+import {Select, SelectProps, Table} from 'antd';
 import styles from './styles.module.css';
-import {useState} from "react";
+import {useState} from 'react';
 import {$table} from '@/app';
 import {useUnit} from 'effector-react';
 import {useFetch} from './hook.ts';
-import {COLUMNS_TABLE_NAME, SELECT_OPTIONS} from './constants.tsx';
+import {COLUMNS_TABLE_NAME, SELECT_OPTIONS, STORE} from './constants.tsx';
 
 export function Home() {
   const storeTable = useUnit($table); // хранилище
   const backTable = useFetch(); // данные с бэка
   const [selectedItem, setSelectedItem] = useState(SELECT_OPTIONS[0].value);
+
   const commonData = [...storeTable, ...backTable.data];
+  const visibleData = selectedItem === STORE ? storeTable : commonData
 
-  const visibleData = selectedItem === 'store' ? storeTable : commonData
-
-  const handleChangeSelect = (value: string) => {
+  const handleChangeSelect: SelectProps['onChange'] = (value: string) => {
     setSelectedItem(value)
   }
 

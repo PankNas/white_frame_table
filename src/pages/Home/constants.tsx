@@ -1,4 +1,13 @@
-export const COLUMNS_TABLE_NAME = [
+import {SelectProps} from 'antd';
+import {TableDataType} from '@/shared';
+
+type ColumnsType = {
+  title: string;
+  dataIndex: string;
+  key: keyof TableDataType;
+}
+
+export const COLUMNS_TABLE_NAME: ColumnsType[] = [
   {
     title: 'Имя',
     dataIndex: 'name',
@@ -21,7 +30,9 @@ export const COLUMNS_TABLE_NAME = [
   },
 ];
 
-export const SELECT_OPTIONS = [
-  {value: 'store', label: <span>Данные из хранилища</span>},
-  {value: 'common', label: <span>Всего данных(хранилище + бэк)</span>}
+export const STORE = 'store';
+
+export const SELECT_OPTIONS: SelectProps['options'] = [
+  {value: STORE, label: <span>Данные из хранилища</span>},
+  {value: 'common', label: <span>Всего данных (хранилище + сервер)</span>}
 ]

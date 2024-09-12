@@ -3,20 +3,20 @@ import {TableDataType} from '@/shared';
 const dataSource: TableDataType[] = [
   {
     key: 3,
-    name: 'Гарри Поттер',
-    age: 11,
-    movie: 'Гарри Поттер и философский камень',
+    name: 'Питер Квилл',
+    age: 30,
+    movie: 'Стражи галактики',
     source: 'Сервер'
   },
   {
     key: 4,
-    name: '',
-    age: 11,
-    movie: '',
+    name: 'Пол Атрейдес',
+    age: 16,
+    movie: 'Дюна',
     source: 'Сервер'
   },
 ];
 
-export const getTableData = () => {
+export const fetchData = () => {
   return Promise.resolve(dataSource);
 }

@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {getTableData} from './utils.ts';
+import {fetchData} from './utils.ts';
 import {TableDataType} from '@/shared';
 
 export const useFetch = () => {
@@ -8,7 +8,7 @@ export const useFetch = () => {
   useEffect(() => {
     const load = async () => {
       try {
-        const data = await getTableData();
+        const data = await fetchData();
         setData(data)
       } catch {
         setData([]);

@@ -10,9 +10,9 @@ export const STORE_TABLE_DATA: TableDataType[] = [
   },
   {
     key: 2,
-    name: '',
-    age: 11,
-    movie: '',
+    name: 'Бильбо Бэггинс',
+    age: 51,
+    movie: 'Хоббит: Нежданное путешествие',
     source: 'Хранилище'
   },
 ];
