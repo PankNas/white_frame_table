@@ -1,4 +1,6 @@
-const dataSource = [
+import {TableDataType} from "./types.ts";
+
+const dataSource: TableDataType[] = [
   {
     key: '1',
     name: 'Mike',

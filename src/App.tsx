@@ -1,7 +1,10 @@
-import {Table} from 'antd';
+import {Select, Table} from 'antd';
 import styles from './styles.module.css';
 import {useEffect, useState} from "react";
 import {getTableData} from "./utils.ts";
+import {$table, fetchTableDataFx} from "./app/store";
+import {useUnit} from "effector-react";
+import './reset.css';
 
 const columns = [
   {
@@ -23,6 +26,7 @@ const columns = [
 
 function App() {
   const [tableData, setTableData] = useState<any>(null);
+  const storeTable = useUnit($table)
 
   useEffect(() => {
     const load = async () => {
@@ -33,9 +37,22 @@ function App() {
     load();
   }, []);
 
+  useEffect(() => {
+    fetchTableDataFx(undefined);
+  }, []);
+
   return (
     <main className={styles.mainPage}>
-      <Table dataSource={tableData} columns={columns}/>
+      <Select
+        defaultValue="store"
+        options={[
+          {value: 'store', label: <span>Данные из хранилища</span>},
+          {value: 'all', label: <span>Данные из бэка</span>}]
+        }
+        className={styles.mainPage__select}
+      />
+
+      <Table dataSource={storeTable} columns={columns}/>
     </main>
   )
 }
