@@ -1,5 +1,5 @@
 import {SelectProps} from 'antd';
-import {TableDataType} from '@/shared';
+import {TableDataType} from '@/app/types.ts';
 
 type ColumnsType = {
   title: string;
