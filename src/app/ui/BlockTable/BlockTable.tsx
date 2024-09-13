@@ -13,7 +13,7 @@ export const BlockTable = () => {
   const storeTable = useUnit($table); // хранилище
   const backTable = useFetchTableData(!isStore); // данные с бэка
 
-  const visibleData = isStore ? storeTable : [...storeTable, ...backTable.data]
+  const displayedData = isStore ? storeTable : [...storeTable, ...backTable.data]
 
   const handleChangeSelect: SelectProps['onChange'] = (value: string) => {
     setSelectedItem(value)
@@ -29,7 +29,7 @@ export const BlockTable = () => {
       />
 
       <Table
-        dataSource={visibleData}
+        dataSource={displayedData}
         columns={COLUMNS_TABLE_NAME}
         pagination={false}
       />
