@@ -33,6 +33,6 @@ export const COLUMNS_TABLE_NAME: ColumnsType[] = [
 export const STORE = 'store';
 
 export const SELECT_OPTIONS: SelectProps['options'] = [
-  {value: STORE, label: <span>Данные из хранилища</span>},
-  {value: 'common', label: <span>Всего данных (хранилище + сервер)</span>}
+  {value: STORE, label: <span>Хранилище</span>},
+  {value: 'common', label: <span>Хранилище + сервер</span>}
 ]

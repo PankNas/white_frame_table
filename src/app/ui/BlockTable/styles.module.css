@@ -1,3 +1,7 @@
+.labelSelect {
+  margin: 0 0 4px;
+}
+
 .select {
-  max-width: 280px;
+  width: 280px;
 }
