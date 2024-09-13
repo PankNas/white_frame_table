@@ -7,7 +7,7 @@ export const useFetchTableData = (update: boolean) => {
 
   useEffect(() => {
     /* имитация резапросов на сервер,
-    * где значение update=true эквивалентно запросу на сервер за актуальными данными
+    * значение update=true эквивалентно запросу на сервер за актуальными данными
     */
     if (update) {
       const load = async () => {
