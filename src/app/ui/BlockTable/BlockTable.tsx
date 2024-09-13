@@ -7,12 +7,13 @@ import {Select, SelectProps, Table} from "antd";
 import styles from "./styles.module.css";
 
 export const BlockTable = () => {
-  const storeTable = useUnit($table); // хранилище
-  const backTable = useFetchTableData(); // данные с бэка
   const [selectedItem, setSelectedItem] = useState(SELECT_OPTIONS[0].value);
+  const isStore = selectedItem === STORE;
 
-  const commonData = [...storeTable, ...backTable.data];
-  const visibleData = selectedItem === STORE ? storeTable : commonData
+  const storeTable = useUnit($table); // хранилище
+  const backTable = useFetchTableData(!isStore); // данные с бэка
+
+  const visibleData = isStore ? storeTable : [...storeTable, ...backTable.data]
 
   const handleChangeSelect: SelectProps['onChange'] = (value: string) => {
     setSelectedItem(value)
