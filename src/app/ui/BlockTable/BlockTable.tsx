@@ -13,20 +13,23 @@ export const BlockTable = () => {
   const storeTable = useUnit($table); // хранилище
   const backTable = useFetchTableData(!isStore); // данные с бэка
 
-  const displayedData = isStore ? storeTable : [...storeTable, ...backTable.data]
+  const displayedData = isStore ? storeTable : [...storeTable, ...backTable.data];
 
   const handleChangeSelect: SelectProps['onChange'] = (value: string) => {
-    setSelectedItem(value)
-  }
+    setSelectedItem(value);
+  };
 
   return (
     <>
-      <Select
-        defaultValue={selectedItem}
-        options={SELECT_OPTIONS}
-        onChange={handleChangeSelect}
-        className={styles.select}
-      />
+      <label>
+        <p className={styles.labelSelect}>Источник данных для таблицы</p>
+        <Select
+          defaultValue={selectedItem}
+          options={SELECT_OPTIONS}
+          onChange={handleChangeSelect}
+          className={styles.select}
+        />
+      </label>
 
       <Table
         dataSource={displayedData}
