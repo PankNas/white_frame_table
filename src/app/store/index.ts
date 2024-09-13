@@ -1,1 +1,1 @@
-export {$table} from './table.ts';
+export {$table} from './table';
