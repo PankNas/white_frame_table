@@ -1,14 +1,13 @@
 import {Select, SelectProps, Table} from 'antd';
+import {useUnit} from 'effector-react';
 import styles from './styles.module.css';
 import {useState} from 'react';
-import {$table} from '@/app';
-import {useUnit} from 'effector-react';
-import {useFetch} from './hook.ts';
 import {COLUMNS_TABLE_NAME, SELECT_OPTIONS, STORE} from './constants.tsx';
+import {$table, useFetchTableData} from "@/app";
 
-export function Home() {
+export function App() {
   const storeTable = useUnit($table); // хранилище
-  const backTable = useFetch(); // данные с бэка
+  const backTable = useFetchTableData(); // данные с бэка
   const [selectedItem, setSelectedItem] = useState(SELECT_OPTIONS[0].value);
 
   const commonData = [...storeTable, ...backTable.data];
