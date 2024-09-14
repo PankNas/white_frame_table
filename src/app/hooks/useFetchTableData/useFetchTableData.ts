@@ -12,8 +12,8 @@ export const useFetchTableData = (update: boolean) => {
     if (update) {
       const load = async () => {
         try {
-          const data = await fetchData();
-          setData([...data]);
+          const currentData = await fetchData();
+          setData([...currentData]);
         } catch {
           setData([]);
         }
