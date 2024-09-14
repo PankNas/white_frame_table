@@ -1,6 +1,6 @@
 import {TableDataType} from '@/app/types.ts';
 
-const dataSource: TableDataType[] = [
+const DATA_SOURCE: TableDataType[] = [
   {
     key: 3,
     name: 'Питер Квилл',
@@ -17,6 +17,6 @@ const dataSource: TableDataType[] = [
   },
 ];
 
-export const fetchData = () => {
-  return Promise.resolve(dataSource);
+export const fetchData = (): Promise<TableDataType[]> => {
+  return Promise.resolve(DATA_SOURCE);
 }
